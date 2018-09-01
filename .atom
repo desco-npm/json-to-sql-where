@@ -1,0 +1,19 @@
+"*":
+  core:
+    closeDeletedFileTabs: true
+    closeEmptyWindows: false
+    restorePreviousWindowsOnStart: "no"
+    telemetryConsent: "no"
+  editor:
+    preferredLineLength: 100
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "9e7ef164-c916-4b14-b232-df4b0cc56902"
+  "local-config":
+    applyOnActivation: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: false
