@@ -1,6 +1,6 @@
 {
   "name": "@desco/json-to-sql-where",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Transforms a JSON in SQL conditions",
   "author": "Rafael A. R. Dias <contato@diasrafael.com.br>",
   "repository": {

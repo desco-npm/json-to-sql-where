@@ -1,27 +1,32 @@
+const isArray = require('is-array')
 const objectMap = require('object-map')
 const quotesIfText = require('@desco/quotes-if-text')
 
-const jsonToSqlWhere = (json = {}, operator = 'AND') => {
-    if (Object.keys(json).length === 0) return '(1 = 1)'
+const jsonToSqlWhere = (_json = {}, _operator = 'AND') => {
+    const conditions = []
 
-    const string = objectMap(json, (val, key) => {
-        if (typeof val !== 'object' || val.length >= 0) {
-            if (typeof val !== 'object') val = [ '=', val, ]
-
-            if (val[0] === 'IN') {
-                val[1] = `(${val[1]})`
-            } else {
-                val[1] = quotesIfText(val[1])
+    objectMap(_json, (v, k) => {
+        if ([ 'AND', 'OR', 'XOR', ].indexOf(k) === -1) {
+            if (typeof v === 'string') {
+                v = { type: '=', value: v, }
             }
 
-            return `${key} ${val[0]} ${val[1]}`
+            if (typeof v.value === 'string') {
+                v.value = quotesIfText(v.value)
+            }
+            else if (isArray(v.value)) {
+                v.value = v.value.map(v => `( ${quotesIfText(v)} )`).join(', ')
+            }
+
+            conditions.push(`${k} ${v.type} ${v.value}`)
         }
         else {
-            return jsonToSqlWhere(val, key)
+            conditions.push(` (${jsonToSqlWhere(v, k)}) `)
         }
     })
 
-    return `(${Object.values(string).join(` ${operator} `)})`
+    console.log(conditions.join(` ${_operator} `))
+    return conditions.join(` ${_operator} `)
 }
 
 module.exports = jsonToSqlWhere
