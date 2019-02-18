@@ -25,7 +25,6 @@ const jsonToSqlWhere = (_json = {}, _operator = 'AND') => {
         }
     })
 
-    console.log(conditions.join(` ${_operator} `))
     return conditions.join(` ${_operator} `)
 }
 
