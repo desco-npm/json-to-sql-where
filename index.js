@@ -1,13 +1,14 @@
 const isArray = require('is-array')
 const objectMap = require('object-map')
 const quotesIfText = require('@desco/quotes-if-text')
+const isObject = require('is-object')
 
 const jsonToSqlWhere = (_json = {}, _operator = 'AND') => {
     const conditions = []
 
     objectMap(_json, (v, k) => {
         if ([ 'AND', 'OR', 'XOR', ].indexOf(k) === -1) {
-            if (typeof v === 'string') {
+            if (!isObject(v)) {
                 v = { type: '=', value: v, }
             }
 
