@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@desco/quotes-if-text": "^1.0.0",
-    "is-array": "^1.0.1",
     "is-object": "^1.0.1",
     "object-map": "^1.0.2"
   },
