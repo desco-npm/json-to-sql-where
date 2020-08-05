@@ -1,0 +1,43 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.dragAndDrop": false,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        100
+    ],
+    "eslint.alwaysShowStatus": true,
+    "eslint.debug": true,
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    // "editor.fontSize": 25,
+    "editor.tabSize": 2,
+    "gitflow4code.features": [
+        {
+            "name": "feature/help",
+            "base": "develop"
+        },
+        {
+            "name": "feature/new_translate",
+            "base": "develop"
+        },
+        {
+            "name": "feature/profile",
+            "base": "develop"
+        },
+        {
+            "name": "feature/new_message",
+            "base": "develop"
+        },
+        {
+            "name": "feature/busca-perfil",
+            "base": "develop"
+        },
+        {
+            "name": "feature/search_profile",
+            "base": "develop"
+        }
+    ]
+}
