@@ -13,7 +13,7 @@
       <br /><br />
       <div align="center">
         <img alt="MIT License" src="https://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge">
-        <img alt="Version 2.1.2" src="https://img.shields.io/static/v1?label=Version&message=2.1.2&color=blue&style=for-the-badge">
+        <img alt="Version 2.1.3" src="https://img.shields.io/static/v1?label=Version&message=2.1.3&color=blue&style=for-the-badge">
       </div>
       <h4 align="center"> 
         🚀 Ready to use! 🚀
@@ -61,7 +61,7 @@ const getQuotesContent = require('@desco/json-to-sql-where')
 ### Browse
 
 ```js
-import getQuotesContent from @desco/json-to-sql-where
+import getQuotesContent from '@desco/json-to-sql-where'
 ```
 
 ---
