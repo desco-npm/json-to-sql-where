@@ -1,6 +1,6 @@
 <div align="right">
-  <a href="README.US.md">
-    <img alt="Read in American English" src="https://img.shields.io/static/v1?label=&message=🇺🇸 Read in American English&color=red&style=for-the-badge" />
+  <a href="README.md">
+    <img alt="Ler em Portugês do Brasil" src="https://img.shields.io/static/v1?label=&message=🇧🇷 Ler em Português do Brasil&color=green&style=for-the-badge" />
   </a>
 </div>
 
@@ -9,48 +9,48 @@
     <td><img src="https://i.ibb.co/qCk0rmM/json-to-sql-where.png"></td>
     <td>  
       <h1>@desco/json-to-sql-where</h1>
-      Converte dados em um JSON para uma condição "WHERE" SQL.
+      Converts data in JSON to a SQL "WHERE" condition.
       <br /><br />
       <div align="center">
-        <img alt="Licença MIT" src="https://img.shields.io/static/v1?label=Licença&message=MIT&color=green&style=for-the-badge">
-        <img alt="Versão 2.1.1" src="https://img.shields.io/static/v1?label=Versão&message=2.1.1&color=blue&style=for-the-badge">
+        <img alt="MIT License" src="https://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge">
+        <img alt="Version 2.1.1" src="https://img.shields.io/static/v1?label=Version&message=2.1.1&color=blue&style=for-the-badge">
       </div>
       <h4 align="center"> 
-        🚀 Pronto para uso! 🚀
+        🚀 Ready to use! 🚀
       </h4>
     </td>
   </tr>
 </table>
 
-> <a href="https://github.com/desco-npm" target="_blank">Veja outros projetos NPM aqui.</a>
+> <a href="https://github.com/desco-npm" target="_blank">See other NPM projects here.</a>
 
-> <a href="https://github.com/descoifica" target="_blank">Veja outros projetos aqui.</a>
-
----
-
-## 📋 Tabela de conteúdos
-
-* [⚙️ Instalação](#Instalação)
-* [📦 Importação](#Importação)
-* [📚 Como Usar](#Como-Usar)
+> <a href="https://github.com/descoifica" target="_blank">See other projects here.</a>
 
 ---
 
-<a name="Instalação"></a>
+## 📋 Table of Contents
 
-## ⚙️ Instalação
+* [⚙️ Installation](#Installation)
+* [📦 Import](#Import)
+* [📚 How to use](#How-to-use)
+
+---
+
+<a name="Installation"></a>
+
+## ⚙️ Installation
 
 ```bash
 npm install --save @desco/json-to-sql-where
 ```
 
-> Note que será necessário ter o **NPM** instalado para o comando funcionar.
+> Note that it will be necessary to have **NPM** installed for the command to work.
 
 ---
 
-<a name="Importação"></a>
+<a name="Import"></a>
 
-## 📦 Importação
+## 📦 Import
 
 ### Node
 
@@ -66,25 +66,25 @@ import getQuotesContent from @desco/json-to-sql-where
 
 ---
 
-<a name="Como-Usar"></a>
+<a name="How-To-Use"></a>
 
-## 📚 Como Usar
+## 📚 How to use
 
-### **AND** somente
+### **AND** only
 
-Vamos começar pelo uso mais simples possível, uma situação onde desejamos apenas verificar se colunas são iguais a valores:
+Let's start with the simplest possible use, a situation where we just want to check if columns are equal to values:
 
 ```js
 jsonToSqlWhere({ nome: 'Rafael Dias', nascimento: '03/07/1986', }) // `nome = "Rafael Dias" AND nascimento = "03/07/1986"`
 ```
 
-Neste caso simples, basta criarmos um **JSON** contendo pares de coluna/valor que o pacote irá automaticamente comverter tudo com o operador **AND**.
+In this simple case, just create a **JSON** containing column / value pairs and the package will automatically convert everything with the **AND** operator.
 
-### Mais Operadores Condicionais (**AND**, **OR** e **XOR**)
+### More Conditional Operators (**AND**, **OR** and **XOR**)
 
-Mas não só de **AND** é feito uma uma **SQL**, não é mesmo?
+But not only **AND** is a **SQL** made, right?
 
-Também podemos utilizar os operadores condicionais **OR** e **XOR** simplesmente agrupando no nosso **JSON**, veja:
+We can also use the conditional operators **OR** and **XOR** simply by grouping in our **JSON**, see:
 
 ```js
 const result2 = jsonToSqlWhere({
@@ -94,13 +94,13 @@ const result2 = jsonToSqlWhere({
 }) // (nome = "Rafael Dias" AND nascimento = "03/07/1986")  AND  (pais = "Brasil" OR genero = "M")  AND  (signo = "Câncer" XOR idade = 34) 
 ```
 
-Note que desta forma, cada um dos operadores foi agrupado entre parênteses.
+Note that in this way, each of the operators was grouped in parentheses.
 
-### Operador condicional dentro de operador condicional
+### Conditional operator within conditional operator
 
-Já vimos como utilizar outros operadores condicionais, porém ainda não conseguimos misturar eles...
+We have already seen how to use other conditional operators, but we have not yet been able to mix them ...
 
-Ainda! Nada nos impede de criar um agrupamento de operadores condicionais dentro de outro agrupamento, veja:
+Yet! Nothing prevents us from creating a grouping of conditional operators within another grouping, see:
 
 ```js
 jsonToSqlWhere({
@@ -115,13 +115,13 @@ jsonToSqlWhere({
 }) // (idade = 34 OR nome = "Rafael Dias" OR  (signo = "Câncer" AND nascimento = "03/07/1986") )
 ```
 
-Dessa forma definimos operador condicional **OR** e dentro dele um subconjunto com operador condicional **AND**!
+In this way we define conditional operator **OR** and within it a subset with conditional operator **AND**!
 
-### Tipos
+### Types
 
-Até aqui vimos como montar nossas condições com os **operadores condicionais**, porém apenas eles não são capazes de nos dar toda a dinâmica necessária.
+So far we have seen how to set up our conditions with **conditional operators**, but only they are not able to give us all the necessary dynamics.
 
-Para isso precisaos ser capazes de utilizar os **operadores comuns** também, tais como *=*, *!=*,  e etc. Para isso, podemos transformar nossos valores em objetos mais detalhados, veja:
+For this we need to be able to use **common operators** as well, such as *=*, *!=*, Etc. For this, we can transform our values into more detailed objects, see:
 
 ```js
 jsonToSqlWhere({
@@ -131,9 +131,9 @@ jsonToSqlWhere({
 }) // nome = "Rafael Dias" AND signo != "Gêmeos" AND idade >= 18
 ```
 
-Básicamente você pode por em **type** absolutamente qualquer coisa queira no lugar do símbolo de igual, além disso você também pode trocar por alguns valores pré-estabelecidos para fazer uso de recursos do **MySQL**.
+Basically you can put in **type** absolutely anything you want in place of the equal symbol, in addition you can also change it for some pre-established values to make use of **MySQL** features.
 
-Por exemplo, se você deseja verificar se um valor esta entre dois outros valores, podemos utilizar o **BETWEEN**:
+For example, if you want to check if a value is between two other values, we can use **BETWEEN**:
 
 ```js
 jsonToSqlWhere({
@@ -141,9 +141,9 @@ jsonToSqlWhere({
 }) // idade BETWEEN 9 AND 34
 ```
 
-Note que neste caso, o valor informado precisa ser um **Array** contendo o menor e maior valor respectivamente.
+Note that in this case, the value entered must be a **Array** containing the smallest and largest value respectively.
 
-Também pode desejar verificar se um valor consta em uma lista de valores, para isso usamos o **IN**, veja:
+You may also want to check if a value is in a list of values, for that we use **IN**, see:
 
 ```js
 jsonToSqlWhere({
@@ -154,9 +154,9 @@ jsonToSqlWhere({
 }) // plataforma IN ("Origin","Steam","XBox","PS","Mobile")
 ```
 
-Note que neste caso o valor deve ser um **Array** contendo todos os valores possíveis.
+Note that in this case the value must be a **Array** containing all possible values.
 
-## Autor
+## Author
 
 <table>
   <tr>
