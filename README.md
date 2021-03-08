@@ -13,7 +13,7 @@
       <br /><br />
       <div align="center">
         <img alt="Licença MIT" src="https://img.shields.io/static/v1?label=Licença&message=MIT&color=green&style=for-the-badge">
-        <img alt="Versão 2.1.1" src="https://img.shields.io/static/v1?label=Versão&message=2.1.1&color=blue&style=for-the-badge">
+        <img alt="Versão 2.1.2" src="https://img.shields.io/static/v1?label=Versão&message=2.1.2&color=blue&style=for-the-badge">
       </div>
       <h4 align="center"> 
         🚀 Pronto para uso! 🚀
@@ -55,13 +55,13 @@ npm install --save @desco/json-to-sql-where
 ### Node
 
 ```js
-const getQuotesContent = require('@desco/json-to-sql-where')
+const jsonToSqlWhere = require('@desco/json-to-sql-where')
 ```
 
 ### Browse
 
 ```js
-import getQuotesContent from @desco/json-to-sql-where
+import jsonToSqlWhere from @desco/json-to-sql-where
 ```
 
 ---
