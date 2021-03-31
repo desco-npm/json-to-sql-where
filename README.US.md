@@ -1,6 +1,6 @@
 <div align="right">
   <a href="README.md">
-    <img alt="Ler em Portugês do Brasil" src="https://img.shields.io/static/v1?label=&message=🇧🇷 Ler em Português do Brasil&color=green&style=for-the-badge" />
+    <img alt="Ler em Portugês do Brasil" src="https://img.shields.io/static/v1?label=&message=Ler+em+Portugu%C3%AAs+do+Brasil&color=green&style=for-the-badge" />
   </a>
 </div>
 
@@ -30,9 +30,9 @@
 
 ## 📋 Table of Contents
 
-* [⚙️ Installation](#Installation)
-* [📦 Import](#Import)
-* [📚 How to use](#How-to-use)
+- [⚙️ Installation](#Installation)
+- [📦 Import](#Import)
+- [📚 How to use](#How-to-use)
 
 ---
 
@@ -55,13 +55,13 @@ npm install --save @desco/json-to-sql-where
 ### Node
 
 ```js
-const getQuotesContent = require('@desco/json-to-sql-where')
+const getQuotesContent = require("@desco/json-to-sql-where");
 ```
 
 ### Browse
 
 ```js
-import getQuotesContent from '@desco/json-to-sql-where'
+import getQuotesContent from "@desco/json-to-sql-where";
 ```
 
 ---
@@ -75,7 +75,7 @@ import getQuotesContent from '@desco/json-to-sql-where'
 Let's start with the simplest possible use, a situation where we just want to check if columns are equal to values:
 
 ```js
-jsonToSqlWhere({ nome: 'Rafael Dias', nascimento: '03/07/1986', }) // `nome = "Rafael Dias" AND nascimento = "03/07/1986"`
+jsonToSqlWhere({ nome: "Rafael Dias", nascimento: "03/07/1986" }); // `nome = "Rafael Dias" AND nascimento = "03/07/1986"`
 ```
 
 In this simple case, just create a **JSON** containing column / value pairs and the package will automatically convert everything with the **AND** operator.
@@ -88,10 +88,10 @@ We can also use the conditional operators **OR** and **XOR** simply by grouping 
 
 ```js
 const result2 = jsonToSqlWhere({
-  AND: { nome: 'Rafael Dias', nascimento: '03/07/1986', },
-  OR: { pais: 'Brasil', genero: 'M', },
-  XOR: { signo: 'Câncer', idade: 34, },
-}) // (nome = "Rafael Dias" AND nascimento = "03/07/1986")  AND  (pais = "Brasil" OR genero = "M")  AND  (signo = "Câncer" XOR idade = 34) 
+  AND: { nome: "Rafael Dias", nascimento: "03/07/1986" },
+  OR: { pais: "Brasil", genero: "M" },
+  XOR: { signo: "Câncer", idade: 34 },
+}); // (nome = "Rafael Dias" AND nascimento = "03/07/1986")  AND  (pais = "Brasil" OR genero = "M")  AND  (signo = "Câncer" XOR idade = 34)
 ```
 
 Note that in this way, each of the operators was grouped in parentheses.
@@ -106,13 +106,13 @@ Yet! Nothing prevents us from creating a grouping of conditional operators withi
 jsonToSqlWhere({
   OR: {
     idade: 34,
-    nome: 'Rafael Dias',
+    nome: "Rafael Dias",
     AND: {
-      signo: 'Câncer',
-      nascimento: '03/07/1986',
+      signo: "Câncer",
+      nascimento: "03/07/1986",
     },
   },
-}) // (idade = 34 OR nome = "Rafael Dias" OR  (signo = "Câncer" AND nascimento = "03/07/1986") )
+}); // (idade = 34 OR nome = "Rafael Dias" OR  (signo = "Câncer" AND nascimento = "03/07/1986") )
 ```
 
 In this way we define conditional operator **OR** and within it a subset with conditional operator **AND**!
@@ -121,14 +121,14 @@ In this way we define conditional operator **OR** and within it a subset with co
 
 So far we have seen how to set up our conditions with **conditional operators**, but only they are not able to give us all the necessary dynamics.
 
-For this we need to be able to use **common operators** as well, such as *=*, *!=*, Etc. For this, we can transform our values into more detailed objects, see:
+For this we need to be able to use **common operators** as well, such as _=_, _!=_, Etc. For this, we can transform our values into more detailed objects, see:
 
 ```js
 jsonToSqlWhere({
-  nome: { type: '=', value: 'Rafael Dias', },
-  signo: { type: '!=', value: 'Gêmeos', },
-  idade: { type: '>=', value: '18', },
-}) // nome = "Rafael Dias" AND signo != "Gêmeos" AND idade >= 18
+  nome: { type: "=", value: "Rafael Dias" },
+  signo: { type: "!=", value: "Gêmeos" },
+  idade: { type: ">=", value: "18" },
+}); // nome = "Rafael Dias" AND signo != "Gêmeos" AND idade >= 18
 ```
 
 Basically you can put in **type** absolutely anything you want in place of the equal symbol, in addition you can also change it for some pre-established values to make use of **MySQL** features.
@@ -137,8 +137,8 @@ For example, if you want to check if a value is between two other values, we can
 
 ```js
 jsonToSqlWhere({
-  idade: { type: 'BETWEEN', value: [ 9, 34, ], },
-}) // idade BETWEEN 9 AND 34
+  idade: { type: "BETWEEN", value: [9, 34] },
+}); // idade BETWEEN 9 AND 34
 ```
 
 Note that in this case, the value entered must be a **Array** containing the smallest and largest value respectively.
@@ -148,10 +148,10 @@ You may also want to check if a value is in a list of values, for that we use **
 ```js
 jsonToSqlWhere({
   plataforma: {
-    type: 'IN',
-    value: [ 'Origin', 'Steam', 'XBox', 'PS', 'Mobile', ],
+    type: "IN",
+    value: ["Origin", "Steam", "XBox", "PS", "Mobile"],
   },
-}) // plataforma IN ("Origin","Steam","XBox","PS","Mobile")
+}); // plataforma IN ("Origin","Steam","XBox","PS","Mobile")
 ```
 
 Note that in this case the value must be a **Array** containing all possible values.
@@ -175,10 +175,10 @@ Note that in this case the value must be a **Array** containing all possible val
         <img alt="Facebook @eudiasrafael" src="https://img.shields.io/static/v1?label=Facebook&message=@eudiasrafael&color=blue&logo=facebook&style=for-the-badge">
       </a>
       <a href="https://github.com/descodifica" target="_blank">
-        <img alt="GitHub Overview @descodifica" src="https://img.shields.io/static/v1?label=GitHub Overview&message=@descodifica&color=black&logo=github&style=for-the-badge">
+        <img alt="GitHub Overview @descodifica" src="https://img.shields.io/static/v1?label=GitHub+Overview&message=@descodifica&color=black&logo=github&style=for-the-badge">
       </a>
       <a href="https://github.com/desco-npm" target="_blank">
-        <img alt="GitHub NPM @desco-npm" src="https://img.shields.io/static/v1?label=GitHub NPM&message=@desco-npm&color=black&logo=github&style=for-the-badge">
+        <img alt="GitHub NPM @desco-npm" src="https://img.shields.io/static/v1?label=GitHub+NPM&message=@desco-npm&color=black&logo=github&style=for-the-badge">
       </a>
       <a href="https://www.npmjs.com/org/desco" target="_blank">
         <img alt="NPM @desco" src="https://img.shields.io/static/v1?label=NPM&message=@desco&color=red&logo=npm&style=for-the-badge">

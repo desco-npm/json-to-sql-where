@@ -1,6 +1,6 @@
 <div align="right">
   <a href="README.US.md">
-    <img alt="Read in American English" src="https://img.shields.io/static/v1?label=&message=🇺🇸 Read in American English&color=red&style=for-the-badge" />
+    <img alt="Read in American English" src="https://img.shields.io/static/v1?label=&message=Read+in+American+English&color=red&style=for-the-badge" />
   </a>
 </div>
 
@@ -12,8 +12,8 @@
       Converte dados em um JSON para uma condição "WHERE" SQL.
       <br /><br />
       <div align="center">
-        <img alt="Licença MIT" src="https://img.shields.io/static/v1?label=Licença&message=MIT&color=green&style=for-the-badge">
-        <img alt="Versão 2.1.3" src="https://img.shields.io/static/v1?label=Versão&message=2.1.3&color=blue&style=for-the-badge">
+        <img alt="Licença MIT" src="https://img.shields.io/static/v1?label=Licen%C3%A7a&message=MIT&color=green&style=for-the-badge">
+        <img alt="Versão 2.1.3" src="https://img.shields.io/static/v1?label=Vers%C3%A3o&message=2.1.3&color=blue&style=for-the-badge">
       </div>
       <h4 align="center"> 
         🚀 Pronto para uso! 🚀
@@ -30,9 +30,9 @@
 
 ## 📋 Tabela de conteúdos
 
-* [⚙️ Instalação](#Instalação)
-* [📦 Importação](#Importação)
-* [📚 Como Usar](#Como-Usar)
+- [⚙️ Instalação](#Instalação)
+- [📦 Importação](#Importação)
+- [📚 Como Usar](#Como-Usar)
 
 ---
 
@@ -55,13 +55,13 @@ npm install --save @desco/json-to-sql-where
 ### Node
 
 ```js
-const jsonToSqlWhere = require('@desco/json-to-sql-where')
+const jsonToSqlWhere = require("@desco/json-to-sql-where");
 ```
 
 ### Browse
 
 ```js
-import jsonToSqlWhere from '@desco/json-to-sql-where'
+import jsonToSqlWhere from "@desco/json-to-sql-where";
 ```
 
 ---
@@ -75,7 +75,7 @@ import jsonToSqlWhere from '@desco/json-to-sql-where'
 Vamos começar pelo uso mais simples possível, uma situação onde desejamos apenas verificar se colunas são iguais a valores:
 
 ```js
-jsonToSqlWhere({ nome: 'Rafael Dias', nascimento: '03/07/1986', }) // `nome = "Rafael Dias" AND nascimento = "03/07/1986"`
+jsonToSqlWhere({ nome: "Rafael Dias", nascimento: "03/07/1986" }); // `nome = "Rafael Dias" AND nascimento = "03/07/1986"`
 ```
 
 Neste caso simples, basta criarmos um **JSON** contendo pares de coluna/valor que o pacote irá automaticamente comverter tudo com o operador **AND**.
@@ -88,10 +88,10 @@ Também podemos utilizar os operadores condicionais **OR** e **XOR** simplesment
 
 ```js
 const result2 = jsonToSqlWhere({
-  AND: { nome: 'Rafael Dias', nascimento: '03/07/1986', },
-  OR: { pais: 'Brasil', genero: 'M', },
-  XOR: { signo: 'Câncer', idade: 34, },
-}) // (nome = "Rafael Dias" AND nascimento = "03/07/1986")  AND  (pais = "Brasil" OR genero = "M")  AND  (signo = "Câncer" XOR idade = 34) 
+  AND: { nome: "Rafael Dias", nascimento: "03/07/1986" },
+  OR: { pais: "Brasil", genero: "M" },
+  XOR: { signo: "Câncer", idade: 34 },
+}); // (nome = "Rafael Dias" AND nascimento = "03/07/1986")  AND  (pais = "Brasil" OR genero = "M")  AND  (signo = "Câncer" XOR idade = 34)
 ```
 
 Note que desta forma, cada um dos operadores foi agrupado entre parênteses.
@@ -106,13 +106,13 @@ Ainda! Nada nos impede de criar um agrupamento de operadores condicionais dentro
 jsonToSqlWhere({
   OR: {
     idade: 34,
-    nome: 'Rafael Dias',
+    nome: "Rafael Dias",
     AND: {
-      signo: 'Câncer',
-      nascimento: '03/07/1986',
+      signo: "Câncer",
+      nascimento: "03/07/1986",
     },
   },
-}) // (idade = 34 OR nome = "Rafael Dias" OR  (signo = "Câncer" AND nascimento = "03/07/1986") )
+}); // (idade = 34 OR nome = "Rafael Dias" OR  (signo = "Câncer" AND nascimento = "03/07/1986") )
 ```
 
 Dessa forma definimos operador condicional **OR** e dentro dele um subconjunto com operador condicional **AND**!
@@ -121,14 +121,14 @@ Dessa forma definimos operador condicional **OR** e dentro dele um subconjunto c
 
 Até aqui vimos como montar nossas condições com os **operadores condicionais**, porém apenas eles não são capazes de nos dar toda a dinâmica necessária.
 
-Para isso precisaos ser capazes de utilizar os **operadores comuns** também, tais como *=*, *!=*,  e etc. Para isso, podemos transformar nossos valores em objetos mais detalhados, veja:
+Para isso precisaos ser capazes de utilizar os **operadores comuns** também, tais como _=_, _!=_, e etc. Para isso, podemos transformar nossos valores em objetos mais detalhados, veja:
 
 ```js
 jsonToSqlWhere({
-  nome: { type: '=', value: 'Rafael Dias', },
-  signo: { type: '!=', value: 'Gêmeos', },
-  idade: { type: '>=', value: '18', },
-}) // nome = "Rafael Dias" AND signo != "Gêmeos" AND idade >= 18
+  nome: { type: "=", value: "Rafael Dias" },
+  signo: { type: "!=", value: "Gêmeos" },
+  idade: { type: ">=", value: "18" },
+}); // nome = "Rafael Dias" AND signo != "Gêmeos" AND idade >= 18
 ```
 
 Básicamente você pode por em **type** absolutamente qualquer coisa queira no lugar do símbolo de igual, além disso você também pode trocar por alguns valores pré-estabelecidos para fazer uso de recursos do **MySQL**.
@@ -137,8 +137,8 @@ Por exemplo, se você deseja verificar se um valor esta entre dois outros valore
 
 ```js
 jsonToSqlWhere({
-  idade: { type: 'BETWEEN', value: [ 9, 34, ], },
-}) // idade BETWEEN 9 AND 34
+  idade: { type: "BETWEEN", value: [9, 34] },
+}); // idade BETWEEN 9 AND 34
 ```
 
 Note que neste caso, o valor informado precisa ser um **Array** contendo o menor e maior valor respectivamente.
@@ -148,10 +148,10 @@ Também pode desejar verificar se um valor consta em uma lista de valores, para 
 ```js
 jsonToSqlWhere({
   plataforma: {
-    type: 'IN',
-    value: [ 'Origin', 'Steam', 'XBox', 'PS', 'Mobile', ],
+    type: "IN",
+    value: ["Origin", "Steam", "XBox", "PS", "Mobile"],
   },
-}) // plataforma IN ("Origin","Steam","XBox","PS","Mobile")
+}); // plataforma IN ("Origin","Steam","XBox","PS","Mobile")
 ```
 
 Note que neste caso o valor deve ser um **Array** contendo todos os valores possíveis.
@@ -175,10 +175,10 @@ Note que neste caso o valor deve ser um **Array** contendo todos os valores poss
         <img alt="Facebook @eudiasrafael" src="https://img.shields.io/static/v1?label=Facebook&message=@eudiasrafael&color=blue&logo=facebook&style=for-the-badge">
       </a>
       <a href="https://github.com/descodifica" target="_blank">
-        <img alt="GitHub Overview @descodifica" src="https://img.shields.io/static/v1?label=GitHub Overview&message=@descodifica&color=black&logo=github&style=for-the-badge">
+        <img alt="GitHub Geral @descodifica" src="https://img.shields.io/static/v1?label=GitHub+Geral&message=@descodifica&color=black&logo=github&style=for-the-badge">
       </a>
       <a href="https://github.com/desco-npm" target="_blank">
-        <img alt="GitHub NPM @desco-npm" src="https://img.shields.io/static/v1?label=GitHub NPM&message=@desco-npm&color=black&logo=github&style=for-the-badge">
+        <img alt="GitHub NPM @desco-npm" src="https://img.shields.io/static/v1?label=GitHub+NPM&message=@desco-npm&color=black&logo=github&style=for-the-badge">
       </a>
       <a href="https://www.npmjs.com/org/desco" target="_blank">
         <img alt="NPM @desco" src="https://img.shields.io/static/v1?label=NPM&message=@desco&color=red&logo=npm&style=for-the-badge">
