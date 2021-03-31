@@ -156,6 +156,8 @@ jsonToSqlWhere({
 
 Note that in this case the value must be a **Array** containing all possible values.
 
+---
+
 ## Author
 
 <table>

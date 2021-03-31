@@ -154,6 +154,8 @@ jsonToSqlWhere({
 }); // plataforma IN ("Origin","Steam","XBox","PS","Mobile")
 ```
 
+---
+
 Note que neste caso o valor deve ser um **Array** contendo todos os valores possíveis.
 
 ## Autor
